@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
+import json
+import os
 from argparse import ArgumentParser
 from importlib import import_module
 from itertools import count
-import os
 
 import h5py
-import json
 import numpy as np
 import tensorflow as tf
 
-from aggregators import AGGREGATORS
-import common
+from triplet_reid import common
+from triplet_reid.aggregators import AGGREGATORS
 
 parser = ArgumentParser(description='Embed a dataset using a trained network.')
 

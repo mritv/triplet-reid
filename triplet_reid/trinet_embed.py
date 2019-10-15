@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 from __future__ import print_function
-import numpy as np
-import cv2
-import pickle
+
 import sys
 
+import cv2
+import numpy as np
 
 if len(sys.argv) != 3:
     print("Usage: {} IMAGE_LIST_FILE MODEL_WEIGHT_FILE".format(sys.argv[0]))
@@ -28,8 +28,7 @@ from lasagne.layers import BatchNormLayer
 from lasagne.layers import Pool2DLayer as PoolLayer
 from lasagne.layers import NonlinearityLayer
 from lasagne.layers import ElemwiseSumLayer
-from lasagne.layers import DenseLayer
-from lasagne.nonlinearities import rectify, softmax
+from lasagne.nonlinearities import rectify
 
 
 def build_simple_block(incoming_layer, names,

@@ -1,16 +1,14 @@
 #!/usr/bin/env python3
+import time
 from argparse import ArgumentParser
 from importlib import import_module
-import time
 
 import numpy as np
 import tensorflow as tf
-from tensorflow.python.framework import graph_io
 
-import common
-from nets import NET_CHOICES
-from heads import HEAD_CHOICES
-
+from triplet_reid import common
+from triplet_reid.heads import HEAD_CHOICES
+from triplet_reid.nets import NET_CHOICES
 
 parser = ArgumentParser(description='Train a ReID network.')
 

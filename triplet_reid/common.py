@@ -1,11 +1,12 @@
 """ A bunch of general utilities shared by train/embed/eval """
 
-from argparse import ArgumentTypeError
 import logging
 import os
+from argparse import ArgumentTypeError
 
 import numpy as np
 import tensorflow as tf
+
 
 # Commandline argument parsing
 ###
@@ -333,7 +334,7 @@ class _WinColorStreamHandler(logging.StreamHandler):
     def __init__(self, stream=None):
         logging.StreamHandler.__init__(self, stream)
         # get file handle for the stream
-        import ctypes, ctypes.util
+        import ctypes.util
         # for some reason find_msvcrt() sometimes doesn't find msvcrt.dll on my system?
         crtname = ctypes.util.find_msvcrt()
         if not crtname:
