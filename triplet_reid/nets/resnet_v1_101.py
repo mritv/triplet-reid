@@ -1,6 +1,6 @@
 import tensorflow as tf
 
-from nets.resnet_v1 import resnet_v1_50, resnet_arg_scope
+from triplet_reid.nets.resnet_v1 import resnet_v1_101, resnet_arg_scope
 
 _RGB_MEAN = [123.68, 116.78, 103.94]
 
@@ -11,9 +11,9 @@ def endpoints(image, is_training):
     image = image - tf.constant(_RGB_MEAN, dtype=tf.float32, shape=(1,1,1,3))
 
     with tf.contrib.slim.arg_scope(resnet_arg_scope(batch_norm_decay=0.9, weight_decay=0.0)):
-        _, endpoints = resnet_v1_50(image, num_classes=None, is_training=is_training, global_pool=True)
+        _, endpoints = resnet_v1_101(image, num_classes=None, is_training=is_training, global_pool=True)
 
     endpoints['model_output'] = endpoints['global_pool'] = tf.reduce_mean(
-        endpoints['resnet_v1_50/block4'], [1, 2], name='pool5')
+        endpoints['resnet_v1_101/block4'], [1, 2], name='pool5')
 
-    return endpoints, 'resnet_v1_50'
+    return endpoints, 'resnet_v1_101'
