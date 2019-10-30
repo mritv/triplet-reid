@@ -15,10 +15,11 @@ from triplet_reid.aggregators import AGGREGATORS
 parser = ArgumentParser(description='Embed a dataset using a trained network.')
 
 # Required
+parser.add_argument("--eval_folder", required=True, help="The evaluation folder containing the images and csv files.")
 
 parser.add_argument(
-    '--experiment_root', required=True,
-    help='Location used to store checkpoints and dumped data.')
+    '--experiment_root', required=False,
+    help='Location used to store checkpoints and dumped data.', default="/export/home/rmarwaha/projects/test_pretrained")
 
 parser.add_argument(
     '--dataset', required=True,
@@ -31,7 +32,7 @@ parser.add_argument(
     help='Path that will be pre-pended to the filenames in the train_set csv.')
 
 parser.add_argument(
-    '--checkpoint', default=None,
+    '--checkpoint', default="checkpoint-25000",
     help='Name of checkpoint file of the trained network within the experiment '
          'root. Uses the last checkpoint if not provided.')
 
